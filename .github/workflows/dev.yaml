@@ -18,4 +18,5 @@ jobs:
       - name: tests
         run: |
           cd frontend/
+          yarn start &
           yarn cypress
