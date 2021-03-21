@@ -2,14 +2,14 @@ FROM node:14.1-alpine
 
 WORKDIR /back
 
-COPY package*.json ./
+COPY package*.json yarn.lock ./
 
 RUN yarn
-
-# ENV PATH="./node_modules/.bin:$PATH"
 
 COPY . ./
 
 EXPOSE 8080
 
-# CMD [ "node", "server.js" ]
+RUN yarn build
+
+CMD [ "node", "dist" ]

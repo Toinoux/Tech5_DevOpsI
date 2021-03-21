@@ -22,15 +22,15 @@ exports.connect = () => {
     const dbname = process.env.MONGO_DATABASE;
     const host = process.env.MONGO_HOST || "localhost";
     const port = process.env.MONGO_PORT || 27017;
-    const uri = `mongodb://${username}:${password}@${host}:${port}/${dbname}?authSource=admin`;
+    const uri = `mongodb+srv://${username}:${password}@${host}/${dbname}`;
+    console.log("uri:", uri);
     if (database) {
         return;
     }
     mongoose_1.default.connect(uri, {
         useNewUrlParser: true,
-        useFindAndModify: true,
+        // useFindAndModify: true,
         useUnifiedTopology: true,
-        useCreateIndex: true,
     });
     database = mongoose_1.default.connection;
     database.once("open", () => __awaiter(void 0, void 0, void 0, function* () {
@@ -47,8 +47,8 @@ exports.disconnect = () => {
     mongoose_1.default.disconnect();
 };
 const kittySchema = new mongoose_1.default.Schema({
-    name: String
+    name: String,
 });
-const Kitten = mongoose_1.default.model('Kitten', kittySchema);
+const Kitten = mongoose_1.default.model("Kitten", kittySchema);
 exports.Kitten = Kitten;
 //# sourceMappingURL=database.js.map
