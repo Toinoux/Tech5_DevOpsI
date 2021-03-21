@@ -6,9 +6,11 @@ on:
   workflow_dispatch:
 jobs:
   tests:
+    runs-on: ubuntu-latest
     name: Test Cypress
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
       - name: setup
         run: |
           yarn
