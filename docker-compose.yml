@@ -1,12 +1,31 @@
 version: '2'
 
 services:
-    server:
-        build: './backend'
+
+    web-dev:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        ports:
+            - "3000:3000"
+            
+    server-dev:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
         ports:
             - "8080:8080"
 
-    web:
-        build: './frontend'
+    web-prod:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile.prod
         ports:
             - "3000:3000"
+                    
+    server-prod:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile.prod
+        ports:
+            - "8080:8080"

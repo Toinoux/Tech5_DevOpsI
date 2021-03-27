@@ -23,7 +23,6 @@ exports.connect = () => {
     const host = process.env.MONGO_HOST || "localhost";
     const port = process.env.MONGO_PORT || 27017;
     const uri = `mongodb+srv://${username}:${password}@${host}/${dbname}`;
-    console.log("uri:", uri);
     if (database) {
         return;
     }
